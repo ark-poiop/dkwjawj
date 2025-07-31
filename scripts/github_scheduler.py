@@ -28,6 +28,7 @@ PROJECT_ROOT = os.path.dirname(SCRIPT_DIR)
 def run_command(command, description):
     """명령어 실행"""
     logger.info(f"🚀 {description} 시작")
+    logger.info(f"📝 실행 명령: {command}")
     
     try:
         result = subprocess.run(
@@ -46,13 +47,17 @@ def run_command(command, description):
                 logger.info(f"📄 출력: {result.stdout.strip()}")
             return True
         else:
-            logger.error(f"❌ {description} 실패")
+            logger.error(f"❌ {description} 실패 (종료 코드: {result.returncode})")
+            if result.stdout:
+                logger.error(f"📄 표준 출력: {result.stdout.strip()}")
             if result.stderr:
-                logger.error(f"📄 오류: {result.stderr.strip()}")
+                logger.error(f"📄 오류 출력: {result.stderr.strip()}")
             return False
             
     except Exception as e:
-        logger.error(f"❌ {description} 실행 중 오류: {e}")
+        logger.error(f"❌ {description} 실행 중 예외 발생: {e}")
+        import traceback
+        logger.error(f"📄 상세 오류: {traceback.format_exc()}")
         return False
 
 def morning_pipeline():
@@ -200,14 +205,22 @@ def main():
         'BUFFER_PROFILE_ID'
     ]
     
+    logger.info("🔍 환경 변수 검증 시작")
     missing_vars = []
     for var in required_env_vars:
-        if not os.getenv(var):
+        value = os.getenv(var)
+        if not value:
             missing_vars.append(var)
+            logger.error(f"❌ {var}: 설정되지 않음")
+        else:
+            logger.info(f"✅ {var}: {value[:10]}...")
     
     if missing_vars:
         logger.error(f"❌ 필수 환경 변수가 누락되었습니다: {', '.join(missing_vars)}")
+        logger.error("GitHub Secrets에서 해당 변수들을 설정해주세요.")
         return 1
+    
+    logger.info("✅ 모든 필수 환경 변수가 설정되었습니다.")
     
     if len(sys.argv) > 1:
         # 단일 세션 실행

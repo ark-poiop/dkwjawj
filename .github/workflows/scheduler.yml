@@ -89,7 +89,23 @@ jobs:
     - name: Run pipeline
       run: |
         echo "Running ${{ steps.session.outputs.session_type }} pipeline..."
+        echo "Current directory: $(pwd)"
+        echo "Python version: $(python --version)"
+        echo "Available scripts:"
+        ls -la scripts/
+        echo "Environment variables check:"
+        echo "OPENAI_API_KEY: ${OPENAI_API_KEY:0:10}..."
+        echo "NEWS_API_KEY: ${NEWS_API_KEY:0:10}..."
+        echo "BUFFER_ACCESS_TOKEN: ${BUFFER_ACCESS_TOKEN:0:10}..."
+        echo "BUFFER_PROFILE_ID: $BUFFER_PROFILE_ID"
+        
+        # 스크립트 실행 권한 확인 및 설정
+        chmod +x scripts/*.py
+        
+        # 파이프라인 실행
         python scripts/github_scheduler.py ${{ steps.session.outputs.session_type }}
+        
+        echo "Pipeline completed with exit code: $?"
         
     - name: Upload artifacts
       uses: actions/upload-artifact@v4
