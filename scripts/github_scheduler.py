@@ -197,39 +197,46 @@ def run_single_session(session_type):
 
 def main():
     """메인 함수"""
-    # 환경 변수 확인
-    required_env_vars = [
-        'OPENAI_API_KEY',
-        'NEWS_API_KEY',
-        'BUFFER_ACCESS_TOKEN',
-        'BUFFER_PROFILE_ID'
-    ]
-    
-    logger.info("🔍 환경 변수 검증 시작")
-    missing_vars = []
-    for var in required_env_vars:
-        value = os.getenv(var)
-        if not value:
-            missing_vars.append(var)
-            logger.error(f"❌ {var}: 설정되지 않음")
+    try:
+        # 환경 변수 확인
+        required_env_vars = [
+            'OPENAI_API_KEY',
+            'NEWS_API_KEY',
+            'BUFFER_ACCESS_TOKEN',
+            'BUFFER_PROFILE_ID'
+        ]
+        
+        logger.info("🔍 환경 변수 검증 시작")
+        missing_vars = []
+        for var in required_env_vars:
+            value = os.getenv(var)
+            if not value:
+                missing_vars.append(var)
+                logger.error(f"❌ {var}: 설정되지 않음")
+            else:
+                logger.info(f"✅ {var}: {value[:10]}...")
+        
+        if missing_vars:
+            logger.error(f"❌ 필수 환경 변수가 누락되었습니다: {', '.join(missing_vars)}")
+            logger.error("GitHub Secrets에서 해당 변수들을 설정해주세요.")
+            return 1
+        
+        logger.info("✅ 모든 필수 환경 변수가 설정되었습니다.")
+        
+        if len(sys.argv) > 1:
+            # 단일 세션 실행
+            session_type = sys.argv[1]
+            logger.info(f"🎯 단일 세션 실행: {session_type}")
+            success = run_single_session(session_type)
+            return 0 if success else 1
         else:
-            logger.info(f"✅ {var}: {value[:10]}...")
-    
-    if missing_vars:
-        logger.error(f"❌ 필수 환경 변수가 누락되었습니다: {', '.join(missing_vars)}")
-        logger.error("GitHub Secrets에서 해당 변수들을 설정해주세요.")
-        return 1
-    
-    logger.info("✅ 모든 필수 환경 변수가 설정되었습니다.")
-    
-    if len(sys.argv) > 1:
-        # 단일 세션 실행
-        session_type = sys.argv[1]
-        logger.info(f"🎯 단일 세션 실행: {session_type}")
-        success = run_single_session(session_type)
-        return 0 if success else 1
-    else:
-        logger.error("❌ 세션 타입을 지정해주세요 (morning/afternoon/evening)")
+            logger.error("❌ 세션 타입을 지정해주세요 (morning/afternoon/evening)")
+            return 1
+            
+    except Exception as e:
+        logger.error(f"❌ 메인 함수에서 예외 발생: {e}")
+        import traceback
+        logger.error(f"📄 상세 오류: {traceback.format_exc()}")
         return 1
 
 if __name__ == "__main__":
