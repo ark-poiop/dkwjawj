@@ -1,0 +1,81 @@
+{
+  "timestamp": "2025-07-31T22:00:57.464331",
+  "posts": [
+    {
+      "id": "dummy1",
+      "title": "S&P 500 hits new all-time high as tech stocks rally",
+      "url": "https://reddit.com/r/investing/comments/dummy1",
+      "subreddit": "investing",
+      "score": 1250,
+      "num_comments": 89,
+      "created_utc": 1753963257.464298,
+      "author": "market_watcher",
+      "selftext": "Tech stocks continue their strong performance with AI and semiconductor companies leading the charge.",
+      "calculated_score": 1250,
+      "keyword": "S&P500"
+    },
+    {
+      "id": "dummy2",
+      "title": "Tesla Q4 earnings beat expectations, stock up 5%",
+      "url": "https://reddit.com/r/stocks/comments/dummy2",
+      "subreddit": "stocks",
+      "score": 890,
+      "num_comments": 156,
+      "created_utc": 1753959657.464312,
+      "author": "tesla_bull",
+      "selftext": "Tesla reported strong Q4 results with record deliveries and improved margins.",
+      "calculated_score": 890,
+      "keyword": "Tesla"
+    },
+    {
+      "id": "dummy3",
+      "title": "FOMC meeting this week - what to expect",
+      "url": "https://reddit.com/r/economics/comments/dummy3",
+      "subreddit": "economics",
+      "score": 567,
+      "num_comments": 234,
+      "created_utc": 1753956057.464317,
+      "author": "fed_watcher",
+      "selftext": "Federal Reserve meeting this week could provide clues about future rate cuts.",
+      "calculated_score": 567,
+      "keyword": "FOMC"
+    },
+    {
+      "id": "dummy4",
+      "title": "Bitcoin breaks $50k resistance level",
+      "url": "https://reddit.com/r/cryptocurrency/comments/dummy4",
+      "subreddit": "cryptocurrency",
+      "score": 2340,
+      "num_comments": 445,
+      "created_utc": 1753952457.464322,
+      "author": "crypto_analyst",
+      "selftext": "Bitcoin successfully broke through the $50k resistance level with strong volume.",
+      "calculated_score": 2340,
+      "keyword": "Bitcoin"
+    },
+    {
+      "id": "dummy5",
+      "title": "NVIDIA AI chips demand continues to surge",
+      "url": "https://reddit.com/r/stocks/comments/dummy5",
+      "subreddit": "stocks",
+      "score": 678,
+      "num_comments": 123,
+      "created_utc": 1753948857.464327,
+      "author": "tech_investor",
+      "selftext": "NVIDIA continues to dominate the AI chip market with strong demand from data centers.",
+      "calculated_score": 678,
+      "keyword": "NVIDIA"
+    }
+  ],
+  "total_posts": 5,
+  "keywords_searched": [
+    "S&P500",
+    "KOSPI",
+    "FOMC",
+    "AI",
+    "Bitcoin",
+    "Tesla",
+    "Apple",
+    "NVIDIA"
+  ]
+}

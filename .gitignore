@@ -1,0 +1,84 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+insight_env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Data files (선택적 - 필요시 주석 해제)
+# data/
+# *.json
+# *.csv
+
+# Preview images (선택적 - 필요시 주석 해제)
+# preview/
+# *.png
+# *.jpg
+# *.jpeg
+
+# Temporary files
+*.tmp
+*.temp
+temp/
+tmp/
+
+# API keys and secrets
+.env.local
+.env.production
+secrets.json
+config.json
+
+# Selenium
+geckodriver.log
+chromedriver.log
+*.log
+
+# Buffer upload logs
+buffer_*.log
+threads_*.log 

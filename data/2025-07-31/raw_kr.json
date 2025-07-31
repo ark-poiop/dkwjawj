@@ -1,0 +1,100 @@
+{
+  "timestamp": "2025-07-31T22:47:28.956159",
+  "kospi": {
+    "index": {
+      "close": 3245.43994140625,
+      "change_pct": -0.2774654360975429,
+      "volume": 540324
+    },
+    "stocks": [
+      {
+        "name": "삼성전자",
+        "code": "005930.KS",
+        "close": 71400.0,
+        "change": -1200.0,
+        "change_pct": -1.6528925619834711,
+        "volume": 29069746
+      },
+      {
+        "name": "SK하이닉스",
+        "code": "000660.KS",
+        "close": 273500.0,
+        "change": 10000.0,
+        "change_pct": 3.795066413662239,
+        "volume": 3472644
+      },
+      {
+        "name": "LG에너지솔루션",
+        "code": "373220.KS",
+        "close": 382500.0,
+        "change": -10500.0,
+        "change_pct": -2.6717557251908395,
+        "volume": 694580
+      },
+      {
+        "name": "삼성바이오로직스",
+        "code": "207940.KS",
+        "close": 1067000.0,
+        "change": -31000.0,
+        "change_pct": -2.823315118397086,
+        "volume": 69865
+      },
+      {
+        "name": "NAVER",
+        "code": "035420.KS",
+        "close": 235000.0,
+        "change": 1000.0,
+        "change_pct": 0.4273504273504274,
+        "volume": 521064
+      }
+    ]
+  },
+  "kosdaq": {
+    "index": {
+      "close": 805.239990234375,
+      "change_pct": 0.19535472987725908,
+      "volume": 831712
+    },
+    "stocks": [
+      {
+        "name": "LG화학",
+        "code": "051910.KS",
+        "close": 301500.0,
+        "change": -4500.0,
+        "change_pct": -1.4705882352941175,
+        "volume": 422313
+      },
+      {
+        "name": "현대차",
+        "code": "005380.KS",
+        "close": 213000.0,
+        "change": -10000.0,
+        "change_pct": -4.484304932735426,
+        "volume": 3074907
+      },
+      {
+        "name": "기아",
+        "code": "000270.KS",
+        "close": 102300.0,
+        "change": -8100.0,
+        "change_pct": -7.336956521739131,
+        "volume": 3132736
+      },
+      {
+        "name": "POSCO홀딩스",
+        "code": "005490.KS",
+        "close": 308500.0,
+        "change": -4500.0,
+        "change_pct": -1.4376996805111821,
+        "volume": 355680
+      }
+    ]
+  },
+  "summary": {
+    "kospi_close": 3245.43994140625,
+    "kospi_change_pct": -0.2774654360975429,
+    "kosdaq_close": 805.239990234375,
+    "kosdaq_change_pct": 0.19535472987725908,
+    "market_trend": "하락"
+  }
+}

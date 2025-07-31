@@ -1,0 +1,76 @@
+{
+  "timestamp": "2025-01-15T21:00:00+09:00",
+  "articles": [
+    {
+      "title": "AI 반도체 수요 급증, NVIDIA 실적 예상치 상회",
+      "content": "AI 반도체 시장에서 NVIDIA의 실적이 예상치를 크게 상회했다. 데이터센터 수요 증가와 AI 모델 개발 확산으로 인한 GPU 수요 급증이 주요 원인으로 분석된다. 전문가들은 이번 실적이 AI 반도체 시장의 성장세를 보여주는 신호라고 평가한다.",
+      "source": "Reddit r/investing",
+      "url": "https://reddit.com/r/investing/comments/example1",
+      "score": 1250,
+      "comments": 89,
+      "published_at": "2025-01-15T18:30:00Z",
+      "author": "tech_investor",
+      "keyword": "AI",
+      "cleaned_title": "AI 반도체 수요 급증 NVIDIA 실적 예상치 상회",
+      "cleaned_content": "AI 반도체 시장에서 NVIDIA의 실적이 예상치를 크게 상회했다. 데이터센터 수요 증가와 AI 모델 개발 확산으로 인한 GPU 수요 급증이 주요 원인으로 분석된다. 전문가들은 이번 실적이 AI 반도체 시장의 성장세를 보여주는 신호라고 평가한다.",
+      "filtered_score": 45.2
+    },
+    {
+      "title": "FOMC 정책 결정 앞두고 시장 긴장감 고조",
+      "content": "연방준비제도(Fed)의 정책 결정을 앞두고 금융시장의 긴장감이 고조되고 있다. 인플레이션 지표 개선에도 불구하고 기준금리 인하 시점에 대한 불확실성이 지속되고 있어 투자자들의 관심이 집중되고 있다.",
+      "source": "Reddit r/economics",
+      "url": "https://reddit.com/r/economics/comments/example2",
+      "score": 890,
+      "comments": 156,
+      "published_at": "2025-01-15T19:15:00Z",
+      "author": "macro_analyst",
+      "keyword": "FOMC",
+      "cleaned_title": "FOMC 정책 결정 앞두고 시장 긴장감 고조",
+      "cleaned_content": "연방준비제도(Fed)의 정책 결정을 앞두고 금융시장의 긴장감이 고조되고 있다. 인플레이션 지표 개선에도 불구하고 기준금리 인하 시점에 대한 불확실성이 지속되고 있어 투자자들의 관심이 집중되고 있다.",
+      "filtered_score": 38.7
+    },
+    {
+      "title": "비트코인 ETF 승인 이후 시장 동향 분석",
+      "content": "비트코인 현물 ETF 승인 이후 암호화폐 시장의 변화를 분석한 보고서가 발표되었다. 기관 투자자들의 유입이 증가하고 있으며, 특히 소매 투자자들의 관심도 높아지고 있다. 전문가들은 이번 승인이 암호화폐 시장의 제도화에 중요한 전환점이 될 것으로 전망한다.",
+      "source": "Reddit r/cryptocurrency",
+      "url": "https://reddit.com/r/cryptocurrency/comments/example3",
+      "score": 756,
+      "comments": 234,
+      "published_at": "2025-01-15T20:00:00Z",
+      "author": "crypto_expert",
+      "keyword": "Bitcoin",
+      "cleaned_title": "비트코인 ETF 승인 이후 시장 동향 분석",
+      "cleaned_content": "비트코인 현물 ETF 승인 이후 암호화폐 시장의 변화를 분석한 보고서가 발표되었다. 기관 투자자들의 유입이 증가하고 있으며, 특히 소매 투자자들의 관심도 높아지고 있다. 전문가들은 이번 승인이 암호화폐 시장의 제도화에 중요한 전환점이 될 것으로 전망한다.",
+      "filtered_score": 35.4
+    },
+    {
+      "title": "테슬라 실적 발표, 전기차 시장 경쟁 심화",
+      "content": "테슬라의 분기 실적이 발표되었으며, 전기차 시장의 경쟁 심화가 확인되었다. 중국 업체들의 공세와 유럽 시장에서의 경쟁이 치열해지고 있어, 테슬라의 시장 점유율 변화에 대한 관심이 높아지고 있다.",
+      "source": "Reddit r/stocks",
+      "url": "https://reddit.com/r/stocks/comments/example4",
+      "score": 634,
+      "comments": 178,
+      "published_at": "2025-01-15T20:45:00Z",
+      "author": "auto_analyst",
+      "keyword": "Tesla",
+      "cleaned_title": "테슬라 실적 발표 전기차 시장 경쟁 심화",
+      "cleaned_content": "테슬라의 분기 실적이 발표되었으며, 전기차 시장의 경쟁 심화가 확인되었다. 중국 업체들의 공세와 유럽 시장에서의 경쟁이 치열해지고 있어, 테슬라의 시장 점유율 변화에 대한 관심이 높아지고 있다.",
+      "filtered_score": 32.1
+    },
+    {
+      "title": "애플 AI 전략 발표, 시장 반응 긍정적",
+      "content": "애플이 AI 전략을 발표하여 시장의 반응이 긍정적이다. 기존 하드웨어 생태계와의 연계를 통한 AI 서비스 확장 계획이 발표되었으며, 투자자들은 애플의 AI 경쟁력 강화에 대한 기대감을 나타내고 있다.",
+      "source": "Reddit r/investing",
+      "url": "https://reddit.com/r/investing/comments/example5",
+      "score": 567,
+      "comments": 145,
+      "published_at": "2025-01-15T21:30:00Z",
+      "author": "apple_fan",
+      "keyword": "Apple",
+      "cleaned_title": "애플 AI 전략 발표 시장 반응 긍정적",
+      "cleaned_content": "애플이 AI 전략을 발표하여 시장의 반응이 긍정적이다. 기존 하드웨어 생태계와의 연계를 통한 AI 서비스 확장 계획이 발표되었으며, 투자자들은 애플의 AI 경쟁력 강화에 대한 기대감을 나타내고 있다.",
+      "filtered_score": 28.9
+    }
+  ],
+  "total_articles": 5
+} 

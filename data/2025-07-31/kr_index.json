@@ -1,0 +1,43 @@
+{
+  "timestamp": "2025-07-31T22:27:58.771524",
+  "kospi": {
+    "name": "KOSPI",
+    "close": 2650.5,
+    "change": 25.3,
+    "change_pct": 0.96,
+    "open": 2625.2,
+    "high": 2660.8,
+    "low": 2620.1,
+    "volume": 850000000,
+    "date": "20250731"
+  },
+  "kosdaq": {
+    "name": "KOSDAQ",
+    "close": 850.2,
+    "change": 8.5,
+    "change_pct": 1.01,
+    "open": 841.7,
+    "high": 855.3,
+    "low": 840.5,
+    "volume": 450000000,
+    "date": "20250731"
+  },
+  "kospi200": {
+    "name": "KOSPI200",
+    "close": 350.8,
+    "change": 3.2,
+    "change_pct": 0.92,
+    "open": 347.6,
+    "high": 352.4,
+    "low": 346.8,
+    "volume": 380000000,
+    "date": "20250731"
+  },
+  "summary": {
+    "kospi_close": 2650.5,
+    "kospi_change_pct": 0.96,
+    "kosdaq_close": 850.2,
+    "kosdaq_change_pct": 1.01,
+    "market_trend": "상승"
+  }
+}

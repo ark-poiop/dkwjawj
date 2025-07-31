@@ -1,0 +1,35 @@
+{
+  "timestamp": "2025-07-31T22:46:55.689638+09:00",
+  "data": {
+    "S&P 500": {
+      "symbol": "^GSPC",
+      "current_price": 6399.77,
+      "change_pct": 0.58,
+      "change_amount": 36.87
+    },
+    "NASDAQ": {
+      "symbol": "^IXIC",
+      "current_price": 21337.39,
+      "change_pct": 0.98,
+      "change_amount": 207.72
+    },
+    "DOW": {
+      "symbol": "^DJI",
+      "current_price": 44511.55,
+      "change_pct": 0.11,
+      "change_amount": 50.27
+    },
+    "Dollar Index": {
+      "symbol": "DX-Y.NYB",
+      "current_price": 100.07,
+      "change_pct": 0.13,
+      "change_amount": 0.13
+    },
+    "WTI": {
+      "symbol": "CL=F",
+      "current_price": 69.3,
+      "change_pct": -1.0,
+      "change_amount": -0.7
+    }
+  }
+}

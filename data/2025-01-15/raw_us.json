@@ -1,0 +1,41 @@
+{
+  "timestamp": "2025-01-15T07:30:00+09:00",
+  "data": {
+    "S&P 500": {
+      "symbol": "^GSPC",
+      "current_price": 4850.25,
+      "change_pct": 1.2,
+      "change_amount": 57.45
+    },
+    "NASDAQ": {
+      "symbol": "^IXIC",
+      "current_price": 15200.80,
+      "change_pct": 0.8,
+      "change_amount": 120.65
+    },
+    "DOW": {
+      "symbol": "^DJI",
+      "current_price": 38500.50,
+      "change_pct": 0.9,
+      "change_amount": 345.20
+    },
+    "Dollar Index": {
+      "symbol": "DX-Y.NYB",
+      "current_price": 102.50,
+      "change_pct": -0.3,
+      "change_amount": -0.31
+    },
+    "WTI": {
+      "symbol": "CL=F",
+      "current_price": 78.50,
+      "change_pct": -1.5,
+      "change_amount": -1.20
+    },
+    "BTC": {
+      "symbol": "BTC-USD",
+      "current_price": 45200.00,
+      "change_pct": 2.1,
+      "change_amount": 930.50
+    }
+  }
+} 

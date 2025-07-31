@@ -1,0 +1,44 @@
+{
+  "slides": [
+    {
+      "heading": "🌙 투나잇 워치리스트",
+      "bullet1": "오늘 주요 뉴스 5개",
+      "bullet2": "내일 주요 이벤트",
+      "hot": "🔥 시장 영향도 높은 뉴스"
+    },
+    {
+      "heading": "📰 핵심 뉴스 1",
+      "bullet1": "U.S. economy grew at a 3% rate in Q2",
+      "bullet2": "2분기 미국 GDP 성장률 3%, 예상을 초과",
+      "hot": "💡 미국 경제 회복 신호로 시장 긍정적"
+    },
+    {
+      "heading": "📰 핵심 뉴스 2",
+      "bullet1": "Fed Meeting Today",
+      "bullet2": "투자자들은 수익 보고서와 금리 결정을 기다림",
+      "hot": "💡 연준의 금리 결정에 따른 시장 움직임 주의"
+    },
+    {
+      "heading": "📰 핵심 뉴스 3",
+      "bullet1": "Trump keeps pressuring the Fed to cut rates",
+      "bullet2": "트럼프, 연준 독립성 도전에 대한 논란",
+      "hot": "💡 정치적 불확실성 증가로 투자자 우려"
+    },
+    {
+      "heading": "🎯 투자자 관심사",
+      "bullet1": "美 CPI 및 FOMC 발표",
+      "bullet2": "시장의 방향성 결정 요소",
+      "hot": "💬 투자자 관심사 집중"
+    },
+    {
+      "heading": "🔖 내일 아침에도 인사이트!",
+      "bullet1": "매일 저녁 9:00 업데이트",
+      "bullet2": "실시간 시장 동향 제공",
+      "hot": "📱 팔로우하고 놓치지 마세요!"
+    }
+  ],
+  "thread": {
+    "main": "🌙 Tonight's Watchlist\n\n• 美 CPI, FOMC 등 빅 이벤트 대기\n• 마이크로소프트·애플 실적 발표 예정\n• 글로벌 투자자 이목 집중\n\n• AI·반도체 관련주 변동성 주의\n• 매크로 변수 체크 필수\n\n👉 오늘 밤 주목 일정, 댓글로 남겨주세요!",
+    "comment": "Tonight Checklist\n① 美 CPI (21:30 KST)\n② FOMC 위원 발언\n③ 애플 실적 콜\n\n🔖 이 글 저장하고 내일 아침 시장 흐름 미리보기!\n#오늘의일정 #저녁브리핑"
+  }
+}

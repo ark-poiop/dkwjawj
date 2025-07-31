@@ -1,0 +1,85 @@
+{
+  "timestamp": "2025-01-15T16:05:00+09:00",
+  "kospi": {
+    "close": 2650.50,
+    "change": 21.20,
+    "change_pct": 0.8,
+    "volume": 8500000000,
+    "foreign_net": 1200000000000,
+    "institutional_net": -800000000000
+  },
+  "kosdaq": {
+    "close": 850.25,
+    "change": 10.15,
+    "change_pct": 1.2,
+    "volume": 2500000000,
+    "foreign_net": 450000000000,
+    "institutional_net": -300000000000
+  },
+  "foreign_investors": [
+    {
+      "name": "삼성전자",
+      "net_buy": 1250.5
+    },
+    {
+      "name": "SK하이닉스",
+      "net_buy": 890.2
+    },
+    {
+      "name": "LG에너지솔루션",
+      "net_buy": 567.8
+    },
+    {
+      "name": "현대차",
+      "net_buy": 345.6
+    },
+    {
+      "name": "기아",
+      "net_buy": 234.1
+    }
+  ],
+  "institutional_investors": [
+    {
+      "name": "삼성전자",
+      "net_buy": -890.3
+    },
+    {
+      "name": "SK하이닉스",
+      "net_buy": -567.2
+    },
+    {
+      "name": "LG에너지솔루션",
+      "net_buy": 234.5
+    },
+    {
+      "name": "현대차",
+      "net_buy": 123.4
+    },
+    {
+      "name": "기아",
+      "net_buy": 89.7
+    }
+  ],
+  "sector_performance": [
+    {
+      "sector": "반도체",
+      "change_pct": 2.5
+    },
+    {
+      "sector": "자동차",
+      "change_pct": 1.8
+    },
+    {
+      "sector": "바이오",
+      "change_pct": -0.5
+    },
+    {
+      "sector": "게임",
+      "change_pct": 0.8
+    },
+    {
+      "sector": "금융",
+      "change_pct": -1.2
+    }
+  ]
+} 
