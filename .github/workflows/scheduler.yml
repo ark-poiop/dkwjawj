@@ -124,6 +124,32 @@ jobs:
         
         echo "Pipeline completed with exit code: $?"
         
+        # 데이터 생성 확인
+        echo "=== 생성된 데이터 확인 ==="
+        ls -la data/$(date +%Y-%m-%d)/ || echo "데이터 디렉토리가 없습니다"
+        
+        # 핵심 파일 존재 확인
+        if [ -f "data/$(date +%Y-%m-%d)/slides_$(date +%Y-%m-%d).json" ]; then
+          echo "✅ 슬라이드 데이터 생성 성공"
+        else
+          echo "❌ 슬라이드 데이터 생성 실패"
+        fi
+        
+        if [ -f "data/$(date +%Y-%m-%d)/thread_post.json" ]; then
+          echo "✅ Thread 포스트 데이터 생성 성공"
+        else
+          echo "❌ Thread 포스트 데이터 생성 실패"
+        fi
+        
+        # 부분적 성공도 허용 (핵심 데이터가 생성되었으면 성공으로 간주)
+        if [ -f "data/$(date +%Y-%m-%d)/slides_$(date +%Y-%m-%d).json" ] && [ -f "data/$(date +%Y-%m-%d)/thread_post.json" ]; then
+          echo "🎉 핵심 데이터 생성 완료 - 성공으로 간주"
+          exit 0
+        else
+          echo "❌ 핵심 데이터 생성 실패"
+          exit 1
+        fi
+        
     - name: Upload artifacts
       uses: actions/upload-artifact@v4
       if: always()
