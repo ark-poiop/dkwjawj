@@ -2,11 +2,17 @@ name: Daily Market Data Pipeline
 
 on:
   schedule:
+    # 월~금요일 (1-5): 3회 실행
     # KST 기준: 07:05, 15:40, 20:00
     # UTC 기준: 22:05 (전날), 06:40, 11:00
-    - cron: '5 22 * * *'  # 07:05 KST (22:05 UTC)
-    - cron: '40 6 * * *'  # 15:40 KST (06:40 UTC)
-    - cron: '0 11 * * *'  # 20:00 KST (11:00 UTC)
+    - cron: '5 22 * * 1-5'  # 월~금 07:05 KST (22:05 UTC)
+    - cron: '40 6 * * 1-5'  # 월~금 15:40 KST (06:40 UTC)
+    - cron: '0 11 * * 1-5'  # 월~금 20:00 KST (11:00 UTC)
+    
+    # 토요일 (6): 오전 1회만 실행
+    # KST 기준: 07:05
+    # UTC 기준: 22:05 (전날)
+    - cron: '5 22 * * 6'  # 토요일 07:05 KST (22:05 UTC)
   workflow_dispatch:
     inputs:
       session_type:
@@ -78,12 +84,24 @@ jobs:
         else
           # 스케줄에 따른 세션 타입 결정
           current_hour=$(date -u +%H)
+          current_weekday=$(date -u +%u)  # 1=월요일, 7=일요일
+          
           if [ "$current_hour" = "22" ]; then
             echo "session_type=morning" >> $GITHUB_OUTPUT
           elif [ "$current_hour" = "06" ]; then
-            echo "session_type=afternoon" >> $GITHUB_OUTPUT
+            # 토요일(6)이면 실행하지 않음 (토요일은 오전만)
+            if [ "$current_weekday" = "6" ]; then
+              echo "session_type=skip" >> $GITHUB_OUTPUT
+            else
+              echo "session_type=afternoon" >> $GITHUB_OUTPUT
+            fi
           elif [ "$current_hour" = "11" ]; then
-            echo "session_type=evening" >> $GITHUB_OUTPUT
+            # 토요일(6)이면 실행하지 않음 (토요일은 오전만)
+            if [ "$current_weekday" = "6" ]; then
+              echo "session_type=skip" >> $GITHUB_OUTPUT
+            else
+              echo "session_type=evening" >> $GITHUB_OUTPUT
+            fi
           fi
         fi
         
@@ -121,6 +139,14 @@ jobs:
     - name: Run pipeline
       run: |
         echo "=== 파이프라인 실행 ==="
+        echo "Session type: ${{ steps.session.outputs.session_type }}"
+        
+        # skip 세션인 경우 실행하지 않음
+        if [ "${{ steps.session.outputs.session_type }}" = "skip" ]; then
+          echo "⏭️ 토요일 오후/저녁 세션은 건너뜁니다 (토요일은 오전만 실행)"
+          exit 0
+        fi
+        
         python scripts/github_scheduler.py ${{ steps.session.outputs.session_type }}
         
         echo "Pipeline completed with exit code: $?"
