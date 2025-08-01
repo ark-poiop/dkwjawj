@@ -237,35 +237,38 @@ def main():
     import sys
     
     if len(sys.argv) != 2:
-        print("사용법: python threads_api_poster.py <thread_post.json>")
+        print("사용법: python threads_api_poster.py <slides_file.json>")
         sys.exit(1)
     
-    json_file = sys.argv[1]
+    slides_file = sys.argv[1]
     
-    if not os.path.exists(json_file):
-        logger.error(f"❌ 파일을 찾을 수 없습니다: {json_file}")
+    if not os.path.exists(slides_file):
+        logger.error(f"❌ 파일을 찾을 수 없습니다: {slides_file}")
         sys.exit(1)
     
     try:
-        # JSON 파일 읽기
-        with open(json_file, 'r', encoding='utf-8') as f:
-            thread_data = json.load(f)
+        # 슬라이드 파일 읽기
+        with open(slides_file, 'r', encoding='utf-8') as f:
+            slides_data = json.load(f)
         
         # Threads API 포스터 초기화
         poster = ThreadsAPIPoster()
         
-        # 포스트 데이터 추출 (JSON 구조에 맞게 수정)
-        if 'thread' in thread_data:
-            main_text = thread_data['thread'].get('main', '')
-            comment_text = thread_data['thread'].get('comment', '')
+        # 포스트 데이터 추출
+        if 'thread' in slides_data:
+            main_text = slides_data['thread'].get('main', '')
+            comment_text = slides_data['thread'].get('comment', '')
         else:
-            # 기존 구조 지원
-            main_text = thread_data.get('main', '')
-            comment_text = thread_data.get('comment', '')
+            logger.error("❌ thread 섹션이 슬라이드 데이터에 없습니다.")
+            sys.exit(1)
         
         if not main_text:
             logger.error("❌ 메인 포스트 텍스트가 없습니다.")
             sys.exit(1)
+        
+        logger.info(f"📝 메인 포스트 길이: {len(main_text)}자")
+        if comment_text:
+            logger.info(f"💬 댓글 길이: {len(comment_text)}자")
         
         # 포스트 작성
         success = poster.post_thread(main_text, comment_text)
@@ -284,6 +287,8 @@ def main():
             
     except Exception as e:
         logger.error(f"❌ 실행 중 오류: {e}")
+        import traceback
+        logger.error(f"📄 상세 오류: {traceback.format_exc()}")
         sys.exit(1)
 
 if __name__ == "__main__":

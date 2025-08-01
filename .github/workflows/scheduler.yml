@@ -64,6 +64,7 @@ jobs:
         echo "FACEBOOK_ACCESS_TOKEN=${{ secrets.FACEBOOK_ACCESS_TOKEN }}" >> $GITHUB_ENV
         echo "IG_USER_ID=${{ secrets.IG_USER_ID }}" >> $GITHUB_ENV
         echo "USE_THREADS_AUTO=${{ secrets.USE_THREADS_AUTO }}" >> $GITHUB_ENV
+        echo "THREADS_API_ENABLED=true" >> $GITHUB_ENV
         echo "TIMEZONE=Asia/Seoul" >> $GITHUB_ENV
         echo "DRY_RUN=false" >> $GITHUB_ENV
         echo "DATA_DIR=data" >> $GITHUB_ENV

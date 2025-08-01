@@ -98,6 +98,16 @@ def morning_pipeline():
     else:
         logger.info("ℹ️ Buffer 설정이 없어 업로드를 건너뜁니다")
     
+    # 5. Threads API 직접 포스팅 (선택사항)
+    if os.getenv('FACEBOOK_ACCESS_TOKEN') and os.getenv('IG_USER_ID'):
+        if not run_command(
+            f"python scripts/threads_api_poster.py {slides_file}",
+            "Threads API 직접 포스팅 (아침)"
+        ):
+            logger.warning("⚠️ Threads API 포스팅 실패했지만 계속 진행합니다")
+    else:
+        logger.info("ℹ️ Threads API 설정이 없어 포스팅을 건너뜁니다")
+    
     logger.info("✅ 아침 파이프라인 완료")
     return True
 
@@ -138,6 +148,16 @@ def afternoon_pipeline():
             logger.warning("⚠️ Buffer 업로드 실패했지만 계속 진행합니다")
     else:
         logger.info("ℹ️ Buffer 설정이 없어 업로드를 건너뜁니다")
+    
+    # 5. Threads API 직접 포스팅 (선택사항)
+    if os.getenv('FACEBOOK_ACCESS_TOKEN') and os.getenv('IG_USER_ID'):
+        if not run_command(
+            f"python scripts/threads_api_poster.py {slides_file}",
+            "Threads API 직접 포스팅 (점심)"
+        ):
+            logger.warning("⚠️ Threads API 포스팅 실패했지만 계속 진행합니다")
+    else:
+        logger.info("ℹ️ Threads API 설정이 없어 포스팅을 건너뜁니다")
     
     logger.info("✅ 점심 파이프라인 완료")
     return True
@@ -186,6 +206,16 @@ def evening_pipeline():
             logger.warning("⚠️ Buffer 업로드 실패했지만 계속 진행합니다")
     else:
         logger.info("ℹ️ Buffer 설정이 없어 업로드를 건너뜁니다")
+    
+    # 6. Threads API 직접 포스팅 (선택사항)
+    if os.getenv('FACEBOOK_ACCESS_TOKEN') and os.getenv('IG_USER_ID'):
+        if not run_command(
+            f"python scripts/threads_api_poster.py {slides_file}",
+            "Threads API 직접 포스팅 (저녁)"
+        ):
+            logger.warning("⚠️ Threads API 포스팅 실패했지만 계속 진행합니다")
+    else:
+        logger.info("ℹ️ Threads API 설정이 없어 포스팅을 건너뜁니다")
     
     logger.info("✅ 저녁 파이프라인 완료")
     return True
