@@ -285,7 +285,11 @@ def call_gpt(prompt, max_retries=2):
         logger.error("❌ OpenAI API 키가 설정되지 않았습니다. .env 파일에서 OPENAI_API_KEY를 설정해주세요.")
         return None
     
-    client = openai.OpenAI(api_key=OPENAI_API_KEY)
+    try:
+        client = openai.OpenAI(api_key=OPENAI_API_KEY)
+    except Exception as e:
+        logger.error(f"❌ OpenAI 클라이언트 초기화 실패: {e}")
+        return None
     
     for attempt in range(max_retries + 1):
         try:
@@ -341,66 +345,73 @@ def main():
     """메인 실행 함수"""
     import sys
     
-    if len(sys.argv) != 2:
-        logger.error("❌ 사용법: python gpt_summarize.py [morning|afternoon|evening]")
-        return None
-    
-    session_type = sys.argv[1]
-    today = datetime.now().strftime('%Y-%m-%d')
-    
-    logger.info(f"🤖 GPT 요약 시작: {session_type} 세션")
-    logger.info(f"📋 사용 모델: {GPT_MODEL}")
-    logger.info(f"🔑 API 키 상태: {'✅ 설정됨' if OPENAI_API_KEY and OPENAI_API_KEY != 'your_openai_api_key_here' else '❌ 설정 필요'}")
-    
-    # 입력 파일 경로
-    if session_type == "morning":
-        input_file = f'data/{today}/raw_us.json'
-        prompt_func = get_morning_prompt
-    elif session_type == "afternoon":
-        input_file = f'data/{today}/raw_kr.json'
-        prompt_func = get_afternoon_prompt
-    elif session_type == "evening":
-        input_file = f'data/{today}/clean_news.json'
-        prompt_func = get_evening_prompt
-    else:
-        logger.error("❌ 잘못된 세션 타입")
-        return None
-    
-    # 입력 파일 확인
-    if not os.path.exists(input_file):
-        logger.error(f"❌ 입력 파일 없음: {input_file}")
-        return None
-    
-    # 데이터 로드
-    with open(input_file, 'r', encoding='utf-8') as f:
-        data = json.load(f)
-    
-    # 지수 데이터 추가 (있는 경우)
-    kr_index_file = f'data/{today}/kr_index.json'
-    if os.path.exists(kr_index_file):
-        with open(kr_index_file, 'r', encoding='utf-8') as f:
-            kr_index_data = json.load(f)
-            if isinstance(data, dict):
-                data['kr_index'] = kr_index_data
-            else:
-                data = {'news': data, 'kr_index': kr_index_data}
-    
-    # 프롬프트 생성
-    prompt = prompt_func(data)
-    
-    # GPT 호출
     try:
-        summary = call_gpt(prompt)
-        if summary:
-            # 결과 저장
-            slides_file, thread_file = save_summary(summary, today, session_type)
-            logger.info("✅ GPT 요약 완료")
-            return slides_file, thread_file
-        else:
-            logger.error("❌ GPT 요약 실패")
+        if len(sys.argv) != 2:
+            logger.error("❌ 사용법: python gpt_summarize.py [morning|afternoon|evening]")
             return None
+        
+        session_type = sys.argv[1]
+        today = datetime.now().strftime('%Y-%m-%d')
+        
+        logger.info(f"🤖 GPT 요약 시작: {session_type} 세션")
+        logger.info(f"📋 사용 모델: {GPT_MODEL}")
+        logger.info(f"🔑 API 키 상태: {'✅ 설정됨' if OPENAI_API_KEY and OPENAI_API_KEY != 'your_openai_api_key_here' else '❌ 설정 필요'}")
+    
+        # 입력 파일 경로
+        if session_type == "morning":
+            input_file = f'data/{today}/raw_us.json'
+            prompt_func = get_morning_prompt
+        elif session_type == "afternoon":
+            input_file = f'data/{today}/raw_kr.json'
+            prompt_func = get_afternoon_prompt
+        elif session_type == "evening":
+            input_file = f'data/{today}/clean_news.json'
+            prompt_func = get_evening_prompt
+        else:
+            logger.error("❌ 잘못된 세션 타입")
+            return None
+        
+        # 입력 파일 확인
+        if not os.path.exists(input_file):
+            logger.error(f"❌ 입력 파일 없음: {input_file}")
+            return None
+        
+        # 데이터 로드
+        with open(input_file, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+        
+        # 지수 데이터 추가 (있는 경우)
+        kr_index_file = f'data/{today}/kr_index.json'
+        if os.path.exists(kr_index_file):
+            with open(kr_index_file, 'r', encoding='utf-8') as f:
+                kr_index_data = json.load(f)
+                if isinstance(data, dict):
+                    data['kr_index'] = kr_index_data
+                else:
+                    data = {'news': data, 'kr_index': kr_index_data}
+        
+        # 프롬프트 생성
+        prompt = prompt_func(data)
+        
+        # GPT 호출
+        try:
+            summary = call_gpt(prompt)
+            if summary:
+                # 결과 저장
+                slides_file, thread_file = save_summary(summary, today, session_type)
+                logger.info("✅ GPT 요약 완료")
+                return slides_file, thread_file
+            else:
+                logger.error("❌ GPT 요약 실패")
+                return None
+        except Exception as e:
+            logger.error(f"❌ GPT 요약 중 오류: {e}")
+            return None
+            
     except Exception as e:
-        logger.error(f"❌ GPT 요약 중 오류: {e}")
+        logger.error(f"❌ 메인 함수에서 예외 발생: {e}")
+        import traceback
+        logger.error(f"📄 상세 오류: {traceback.format_exc()}")
         return None
 
 if __name__ == "__main__":
