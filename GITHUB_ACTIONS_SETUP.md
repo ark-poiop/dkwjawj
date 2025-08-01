@@ -37,15 +37,21 @@ BUFFER_ACCESS_TOKEN=your_buffer_access_token
 BUFFER_PROFILE_ID=your_buffer_profile_id
 ```
 
-#### Threads API
+#### Threads API (직접 포스팅)
 ```
-THREADS_USERNAME=your_threads_username
-THREADS_PASSWORD=your_threads_password
-USE_THREADS_API=true
 FACEBOOK_ACCESS_TOKEN=your_facebook_access_token
 IG_USER_ID=your_instagram_user_id
+USE_THREADS_API=true
+THREADS_USERNAME=your_threads_username
+THREADS_PASSWORD=your_threads_password
 USE_THREADS_AUTO=false
 ```
+
+**Threads API 설정 방법:**
+1. Facebook 개발자 계정 생성: https://developers.facebook.com/
+2. 새 앱 생성 → Threads API 선택
+3. Graph API Explorer에서 액세스 토큰 생성
+4. Instagram User ID 확인 (Instagram API 또는 온라인 도구 사용)
 
 ## 워크플로우 파일 구조
 
@@ -59,6 +65,12 @@ USE_THREADS_AUTO=false
 - GitHub Actions 최적화된 스케줄러
 - 환경 변수 검증
 - 로깅 개선
+- Threads API 직접 포스팅 통합
+
+### `scripts/threads_api_poster.py`
+- Threads API를 통한 직접 포스팅
+- 메인 포스트 및 댓글 자동 작성
+- 인사이트 데이터 수집
 
 ## 수동 실행
 GitHub Actions 페이지에서 "Run workflow" 버튼을 클릭하여 수동으로 실행할 수 있습니다:
