@@ -88,12 +88,15 @@ def morning_pipeline():
     ):
         return False
     
-    # 4. Buffer 업로드
-    if not run_command(
-        f"python scripts/buffer_uploader.py morning {slides_file}",
-        "Buffer 업로드 (아침)"
-    ):
-        return False
+    # 4. Buffer 업로드 (선택사항)
+    if os.getenv('BUFFER_ACCESS_TOKEN') and os.getenv('BUFFER_PROFILE_ID'):
+        if not run_command(
+            f"python scripts/buffer_uploader.py morning {slides_file}",
+            "Buffer 업로드 (아침)"
+        ):
+            logger.warning("⚠️ Buffer 업로드 실패했지만 계속 진행합니다")
+    else:
+        logger.info("ℹ️ Buffer 설정이 없어 업로드를 건너뜁니다")
     
     logger.info("✅ 아침 파이프라인 완료")
     return True
@@ -126,12 +129,15 @@ def afternoon_pipeline():
     ):
         return False
     
-    # 4. Buffer 업로드
-    if not run_command(
-        f"python scripts/buffer_uploader.py afternoon {slides_file}",
-        "Buffer 업로드 (점심)"
-    ):
-        return False
+    # 4. Buffer 업로드 (선택사항)
+    if os.getenv('BUFFER_ACCESS_TOKEN') and os.getenv('BUFFER_PROFILE_ID'):
+        if not run_command(
+            f"python scripts/buffer_uploader.py afternoon {slides_file}",
+            "Buffer 업로드 (점심)"
+        ):
+            logger.warning("⚠️ Buffer 업로드 실패했지만 계속 진행합니다")
+    else:
+        logger.info("ℹ️ Buffer 설정이 없어 업로드를 건너뜁니다")
     
     logger.info("✅ 점심 파이프라인 완료")
     return True
@@ -171,12 +177,15 @@ def evening_pipeline():
     ):
         return False
     
-    # 5. Buffer 업로드
-    if not run_command(
-        f"python scripts/buffer_uploader.py evening {slides_file}",
-        "Buffer 업로드 (저녁)"
-    ):
-        return False
+    # 5. Buffer 업로드 (선택사항)
+    if os.getenv('BUFFER_ACCESS_TOKEN') and os.getenv('BUFFER_PROFILE_ID'):
+        if not run_command(
+            f"python scripts/buffer_uploader.py evening {slides_file}",
+            "Buffer 업로드 (저녁)"
+        ):
+            logger.warning("⚠️ Buffer 업로드 실패했지만 계속 진행합니다")
+    else:
+        logger.info("ℹ️ Buffer 설정이 없어 업로드를 건너뜁니다")
     
     logger.info("✅ 저녁 파이프라인 완료")
     return True
@@ -198,30 +207,52 @@ def run_single_session(session_type):
 def main():
     """메인 함수"""
     try:
-        # 환경 변수 확인
-        required_env_vars = [
-            'OPENAI_API_KEY',
-            'NEWS_API_KEY',
-            'BUFFER_ACCESS_TOKEN',
-            'BUFFER_PROFILE_ID'
-        ]
+            # 환경 변수 확인
+    required_env_vars = [
+        'OPENAI_API_KEY',
+        'NEWS_API_KEY'
+    ]
+    
+    optional_env_vars = [
+        'BUFFER_ACCESS_TOKEN',
+        'BUFFER_PROFILE_ID',
+        'REDDIT_CLIENT_ID',
+        'REDDIT_CLIENT_SECRET',
+        'REDDIT_USER_AGENT',
+        'FRED_API_KEY',
+        'THREADS_USERNAME',
+        'THREADS_PASSWORD',
+        'FACEBOOK_ACCESS_TOKEN',
+        'IG_USER_ID'
+    ]
         
-        logger.info("🔍 환경 변수 검증 시작")
-        missing_vars = []
-        for var in required_env_vars:
-            value = os.getenv(var)
-            if not value:
-                missing_vars.append(var)
-                logger.error(f"❌ {var}: 설정되지 않음")
-            else:
-                logger.info(f"✅ {var}: {value[:10]}...")
-        
-        if missing_vars:
-            logger.error(f"❌ 필수 환경 변수가 누락되었습니다: {', '.join(missing_vars)}")
-            logger.error("GitHub Secrets에서 해당 변수들을 설정해주세요.")
-            return 1
-        
-        logger.info("✅ 모든 필수 환경 변수가 설정되었습니다.")
+            logger.info("🔍 환경 변수 검증 시작")
+    
+    # 필수 환경 변수 확인
+    missing_required_vars = []
+    for var in required_env_vars:
+        value = os.getenv(var)
+        if not value:
+            missing_required_vars.append(var)
+            logger.error(f"❌ {var}: 설정되지 않음 (필수)")
+        else:
+            logger.info(f"✅ {var}: {value[:10]}... (필수)")
+    
+    if missing_required_vars:
+        logger.error(f"❌ 필수 환경 변수가 누락되었습니다: {', '.join(missing_required_vars)}")
+        logger.error("GitHub Secrets에서 해당 변수들을 설정해주세요.")
+        return 1
+    
+    logger.info("✅ 모든 필수 환경 변수가 설정되었습니다.")
+    
+    # 선택적 환경 변수 확인
+    logger.info("🔍 선택적 환경 변수 확인")
+    for var in optional_env_vars:
+        value = os.getenv(var)
+        if not value:
+            logger.warning(f"⚠️ {var}: 설정되지 않음 (선택사항)")
+        else:
+            logger.info(f"✅ {var}: {value[:10]}... (선택사항)")
         
         if len(sys.argv) > 1:
             # 단일 세션 실행
