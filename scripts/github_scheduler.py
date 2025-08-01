@@ -207,52 +207,52 @@ def run_single_session(session_type):
 def main():
     """메인 함수"""
     try:
-            # 환경 변수 확인
-    required_env_vars = [
-        'OPENAI_API_KEY',
-        'NEWS_API_KEY'
-    ]
-    
-    optional_env_vars = [
-        'BUFFER_ACCESS_TOKEN',
-        'BUFFER_PROFILE_ID',
-        'REDDIT_CLIENT_ID',
-        'REDDIT_CLIENT_SECRET',
-        'REDDIT_USER_AGENT',
-        'FRED_API_KEY',
-        'THREADS_USERNAME',
-        'THREADS_PASSWORD',
-        'FACEBOOK_ACCESS_TOKEN',
-        'IG_USER_ID'
-    ]
+        # 환경 변수 확인
+        required_env_vars = [
+            'OPENAI_API_KEY',
+            'NEWS_API_KEY'
+        ]
         
-            logger.info("🔍 환경 변수 검증 시작")
-    
-    # 필수 환경 변수 확인
-    missing_required_vars = []
-    for var in required_env_vars:
-        value = os.getenv(var)
-        if not value:
-            missing_required_vars.append(var)
-            logger.error(f"❌ {var}: 설정되지 않음 (필수)")
-        else:
-            logger.info(f"✅ {var}: {value[:10]}... (필수)")
-    
-    if missing_required_vars:
-        logger.error(f"❌ 필수 환경 변수가 누락되었습니다: {', '.join(missing_required_vars)}")
-        logger.error("GitHub Secrets에서 해당 변수들을 설정해주세요.")
-        return 1
-    
-    logger.info("✅ 모든 필수 환경 변수가 설정되었습니다.")
-    
-    # 선택적 환경 변수 확인
-    logger.info("🔍 선택적 환경 변수 확인")
-    for var in optional_env_vars:
-        value = os.getenv(var)
-        if not value:
-            logger.warning(f"⚠️ {var}: 설정되지 않음 (선택사항)")
-        else:
-            logger.info(f"✅ {var}: {value[:10]}... (선택사항)")
+        optional_env_vars = [
+            'BUFFER_ACCESS_TOKEN',
+            'BUFFER_PROFILE_ID',
+            'REDDIT_CLIENT_ID',
+            'REDDIT_CLIENT_SECRET',
+            'REDDIT_USER_AGENT',
+            'FRED_API_KEY',
+            'THREADS_USERNAME',
+            'THREADS_PASSWORD',
+            'FACEBOOK_ACCESS_TOKEN',
+            'IG_USER_ID'
+        ]
+        
+        logger.info("🔍 환경 변수 검증 시작")
+        
+        # 필수 환경 변수 확인
+        missing_required_vars = []
+        for var in required_env_vars:
+            value = os.getenv(var)
+            if not value:
+                missing_required_vars.append(var)
+                logger.error(f"❌ {var}: 설정되지 않음 (필수)")
+            else:
+                logger.info(f"✅ {var}: {value[:10]}... (필수)")
+        
+        if missing_required_vars:
+            logger.error(f"❌ 필수 환경 변수가 누락되었습니다: {', '.join(missing_required_vars)}")
+            logger.error("GitHub Secrets에서 해당 변수들을 설정해주세요.")
+            return 1
+        
+        logger.info("✅ 모든 필수 환경 변수가 설정되었습니다.")
+        
+        # 선택적 환경 변수 확인
+        logger.info("🔍 선택적 환경 변수 확인")
+        for var in optional_env_vars:
+            value = os.getenv(var)
+            if not value:
+                logger.warning(f"⚠️ {var}: 설정되지 않음 (선택사항)")
+            else:
+                logger.info(f"✅ {var}: {value[:10]}... (선택사항)")
         
         if len(sys.argv) > 1:
             # 단일 세션 실행
